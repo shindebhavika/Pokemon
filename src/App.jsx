@@ -5,6 +5,7 @@ import Home from './components/Home';
 import BackToTopButton from './components/BackToTopButton';
 import Navbar from './components/Navbar';
 import Wishlist from './components/wishlist';
+
 function App() {
   return (
     <div>
@@ -14,7 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/my-fav" element={<Wishlist></Wishlist>}></Route>
+          <Route path="/my-fav" element={<Wishlist/>}></Route>
         </Routes>
       </Router>
 
