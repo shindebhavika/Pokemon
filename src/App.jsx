@@ -4,7 +4,8 @@ import Home from './components/Home';
 
 import BackToTopButton from './components/BackToTopButton';
 import Navbar from './components/Navbar';
-import Wishlist from './components/wishlist';
+
+import CarDetail from './components/CarDetail';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/my-fav" element={<Wishlist/>}></Route>
+          <Route path="/my-fav" element={<CarDetail/>}></Route>
         </Routes>
       </Router>
 

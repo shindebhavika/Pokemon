@@ -3,7 +3,8 @@ import { fetchCars } from "../utils/api";
 
 export const getCars = createAsyncThunk("cars/getCars", async () => {
   const data = await fetchCars();
-  return data;
+  console.log(data.results)
+  return data.results;
 });
 
 const carSlice = createSlice({
@@ -21,17 +22,17 @@ const carSlice = createSlice({
       state.page = action.payload;
     },
     addToWishlist(state, action) {
-      const car = action.payload;
-      const updateCars = state.wishlist.find((item, idx) => car.id == item.id);
+      const pokemon = action.payload;
+      const updateCars = state.wishlist.find((item, idx) => pokemon.id == item.id);
       if (!updateCars) {
-        state.wishlist.push(car);
+        state.wishlist.push(pokemon);
       }
     },
 
     removeFromWishlist(state, action) {
-      state.wishlist = state.wishlist.filter(
-        (item) => item.id !== action.payload
-      );
+      // state.wishlist = state.wishlist.filter(
+      //   (item) => item.id !== action.payload
+      // );
     },
   },
   extraReducers: (builder) => {
