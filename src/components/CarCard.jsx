@@ -10,7 +10,7 @@ function CarCard({ pokemon }) {
     async function getData() {
       const data = await (await fetch(pokemon.url)).json();
       setData(data);
-      console.log(data.sprites);
+     
       const img = Object.entries(data.sprites)
         .filter(
           ([key, value]) =>
@@ -18,14 +18,13 @@ function CarCard({ pokemon }) {
         )
         .map(([_, value]) => value); // Just get the URLs
 
-      setImages(img); // If you want to set state
+      setImages(img); 
 
-      console.log(img, "img");
       setImages(img);
     }
     getData();
   }, [pokemon]);
-  console.log(data, "im");
+  
   return (
     <div
       className="cursor-pointer hover:underline p-2  bg-transparent rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white shadow hover:shadow-lg transition duration-300 w-80 "
