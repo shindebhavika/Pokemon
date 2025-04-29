@@ -3,13 +3,29 @@ import { fetchCars } from "../utils/api";
 
 export const getCars = createAsyncThunk("cars/getCars", async () => {
   const data = await fetchCars();
-  console.log(data.results)
-  return data.results;
+  const detailedData = await Promise.all(
+    data.results.map(async (pokemon) => {
+      const res = await fetch(pokemon.url);
+      const details = await res.json();
+      return {
+        name: pokemon.name,
+        url: pokemon.url,
+        types: details.types, // 👈 add types here
+        id: details.id,
+        weight: details.weight,
+        abilities: details.abilities,
+        sprites: details.sprites,
+      };
+    })
+  );
+
+  return detailedData;
 });
 
 const carSlice = createSlice({
   name: "cars",
   initialState: {
+
     cars: [],
     page: 1,
     status: "idle" | "loading" | "succeeded" | "failed",

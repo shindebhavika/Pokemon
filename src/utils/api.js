@@ -3,7 +3,7 @@
 export const fetchCars = async () => {
   try {
     // Step 1: Fetch pokemons
-    const carRes = await fetch(' https://pokeapi.co/api/v2/pokemon');
+    const carRes = await fetch('https://pokeapi.co/api/v2/pokemon?limit=150');
     if (!carRes.ok) throw new Error(`Car API error: ${carRes.status}`);
     const pokemons = await carRes.json();
 
